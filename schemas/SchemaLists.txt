@@ -33,6 +33,7 @@ Images: [Link to Post Images]
 Links: [Link to External Links]
 Tags: [List of Tags]
 
+
 COMMENTS
 Parent Post: [Post it is linked to]
 No. of Comments: [Number of Comments]
@@ -42,6 +43,8 @@ Body: [Comment Body]
 Likes: [Number of Likes on Comment]
 No. of Sub Comments/Replies: [Number of Sub Comments/Replies]
 Comment it is a reply to: [Parent Comment ID or Empty]
+Likes :
+Dislikes:
 
 FEED
 
