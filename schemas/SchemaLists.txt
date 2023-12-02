@@ -1,0 +1,61 @@
+PROFILE
+
+Name:
+DOB: [Date of Birth]
+Gender: 
+Aadhar: [Private]
+Phone Number: [OPTIONAL]
+Username: [Your Username]   # Not USED... Username and Name can be the same
+Joined on: [Join Date]
+Location:
+Password: [Your Password]
+No. of Posts: [Number of Posts]
+Picture: [Link to Profile Picture]
+Bio: [Your Bio]
+All Posts/Comments: [Link to All Posts/Comments]
+Blocked Users: [List of Blocked Users]
+
+SETTINGS <-- This is more of a menu for FRONTEND... all routes for the operations will be given 
+
+Change Password: 
+Delete Accout:
+Change Profile Info: [Link to Change Profile Info]   <- Can be a straight button in the front end... 
+                                                        doesnt need to be in settings... I will provide route for the same 
+
+
+POSTS
+
+Username: [Username of Post Creator]
+Timestamp: [Post Timestamp]
+Title: [Post Title]
+Body: [Post Body]
+Images: [Link to Post Images]
+Links: [Link to External Links]
+Tags: [List of Tags]
+
+COMMENTS
+Parent Post: [Post it is linked to]
+No. of Comments: [Number of Comments]
+Username: [Username of Commenter]
+Timestamp: [Comment Timestamp]
+Body: [Comment Body]
+Likes: [Number of Likes on Comment]
+No. of Sub Comments/Replies: [Number of Sub Comments/Replies]
+Comment it is a reply to: [Parent Comment ID or Empty]
+
+FEED
+
+Posts:
+- Username: [Username of Post Creator]
+  Timestamp: [Post Timestamp]
+  Title: [Post Title]
+  Body: [Post Body]
+  Images: [Link to Post Images]
+  Links: [Link to External Links]
+  Tags: [List of Tags]
+  No. of Comments: [Number of Comments]
+  Likes: [Number of Likes]
+
+- [Next Post]
+
+[Next Feed Item]
