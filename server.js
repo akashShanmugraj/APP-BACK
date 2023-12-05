@@ -6,6 +6,7 @@ import cors from "cors";
 
 import profileRoutes from "./routes/profileRoutes.js";
 import postsRoutes from "./routes/postsRoutes.js";
+import commentRoutes from "./routes/commentRoutes.js";
 
 const app = express();
 
@@ -49,3 +50,4 @@ app.listen(process.env.PORT || 5000, () => {
 //routes
 app.use("/api/profile", profileRoutes);
 app.use("/api/posts", postsRoutes);
+app.use("/api/comments", commentRoutes);
