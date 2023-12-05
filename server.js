@@ -4,6 +4,7 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import profileRoutes from "./routes/profileRoutes.js";
 
 const app = express();
 
@@ -41,4 +42,8 @@ app.use(express.urlencoded({ extended: true }));
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Server is listening on http://localhost:${process.env.PORT}`);
   });
-  
+
+
+
+//routes
+app.use("/api/profile", profileRoutes);
