@@ -14,6 +14,20 @@ const app = express();
 //   })
 // );
 
+//mongoose connect
+mongoose.connect(process.env.MONGO_URI);
+mongoose.Promise = global.Promise;
+
+//dotenv config
+dotenv.config();
+
+//check if mongo is connected
+mongoose.connection.on("connected", () => {
+  console.log("Connected to mongo instance");
+});
+
+
+
 app.use(morgan("dev"));
 
 app.get("/apiCheck", (req, res) => {
