@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 import profileRoutes from "./routes/profileRoutes.js";
+import postsRoutes from "./routes/postsRoutes.js";
 
 const app = express();
 
@@ -47,3 +48,4 @@ app.listen(process.env.PORT || 5000, () => {
 
 //routes
 app.use("/api/profile", profileRoutes);
+app.use("/api/posts", postsRoutes);
