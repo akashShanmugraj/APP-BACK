@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import mongoose from 'mongoose'
 import Profile from '../schemas/profileSchema.js'
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcrypt'
 
 //fetch all profiles
 const getProfiles = asyncHandler(async (req, res) => {
@@ -37,32 +37,59 @@ const getProfileByUsername = asyncHandler(async (req, res) => {
 
 //create profile
 const createProfile = asyncHandler(async (req, res) => {
-    password_to_hash = req.body.password.encode('utf-8')
-    const salt = bcrypt.genSaltSync(10)
-    hashed_password = bcrypt.hashSync(password_to_hash, salt)
-    
-    const profile = new Profile({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        dob: req.body.dob,
-        aadharNumber: req.body.aadharNumber,
-        phoneNumber: req.body.phoneNumber,
-        userName: req.body.userName,
-        password: hashed_password,
-        joinedOn: req.body.joinedOn,
-        location: req.body.location,
-        profilePicture: req.body.profilePicture,
-        profileDescription: req.body.profileDescription,
-        noOfPosts: req.body.noOfPosts,
-        postsOrComments: req.body.postsOrComments,
-        blockedUsers: req.body.blockedUsers,
-        profilePic: req.body.profilePic,
-        profilePicType: req.body.profilePicType
-    })
+    const {
+        name,
+        dob,
+        aadharNumber,
+        phoneNumber,
+        userName,
+        password,
+        joinedOn,
+        location,
+        profilePicture,
+        profileDescription,
+        noOfPosts,
+        postsOrComments,
+        blockedUsers,
+        profilePic,
+        profilePicType
+    } = req.body;
 
-    const createdProfile = await profile.save()
-    res.status(201).json(createdProfile)
+    if (!dob || !name || !aadharNumber || !userName || !password || !joinedOn || !location) {
+        res.status(400).json({ message: 'Please provide all required fields' });
+        return;
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashed_password = await bcrypt.hash(password, salt);
+
+    const profile = new Profile({
+        name,
+        dateOfBirth: dob,  // Adjust this field to match your schema
+        aadharNumber,
+        phoneNumber,
+        userName,
+        password: hashed_password,
+        joinedOn,
+        location,
+        profilePicture,
+        profileDescription,
+        noOfPosts,
+        postsOrComments,
+        blockedUsers,
+        profilePic,
+        profilePicType
+    });
+
+    try {
+        const createdProfile = await profile.save();
+        res.status(201).json(createdProfile);
+    } catch (error) {
+        res.status(400).json({ message: 'Error creating profile', error: error.message });
+    }
 });
+
+
 
 //update profile
 const updateProfile = asyncHandler(async (req, res) => {

@@ -18,22 +18,21 @@ const app = express();
 // );
 
 //mongoose connect
-mongoose.connect(process.env.MONGO_URI);
-mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+    // Your server startup logic here
+  })
+  .catch(error => {
+    console.error('Error connecting to MongoDB:', error.message);
+  });
 
 //dotenv config
 dotenv.config();
 
-//check if mongo is connected
-mongoose.connection.on("connected", () => {
-  console.log("Connected to mongo instance");
-});
-
-
-
 app.use(morgan("dev"));
 
-app.get("/apiCheck", (req, res) => {
+app.get("/api/check", (req, res) => {
   res.send("This is the Grievance Port API... Online and Active!");
 });
 
@@ -41,7 +40,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is listening on http://localhost:${process.env.PORT}`);
   });
 
