@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
-import Comment from "../schemas/commentSchema.js";
-import asyncHandler from "express-async-handler";
+const mongoose = require("mongoose");
+const Comment = require("../schemas/commentSchema.js");
+const asyncHandler = require("express-async-handler");
+
 
 //fetch all comments
 const getComments = asyncHandler(async (req, res) => {
@@ -102,4 +103,4 @@ const deleteComment = asyncHandler(async (req, res) => {
   }
 });
 
-export { getComments, getCommentById, getCommentByUsername, createComment, updateComment, deleteComment };
+module.exports ={ getComments, getCommentById, getCommentByUsername, createComment, updateComment, deleteComment };

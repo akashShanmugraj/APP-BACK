@@ -1,12 +1,13 @@
-import express from "express";
-import dotenv from "dotenv";
-import morgan from "morgan";
-import mongoose from "mongoose";
-import cors from "cors";
+const express = require("express");
+const dotenv = require("dotenv");
+const morgan = require("morgan");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-import profileRoutes from "./routes/profileRoutes.js";
-import postsRoutes from "./routes/postsRoutes.js";
-import commentRoutes from "./routes/commentRoutes.js";
+const profileRoutes = require("./routes/profileRoutes.js");
+const postsRoutes = require("./routes/postsRoutes.js");
+const commentRoutes = require("./routes/commentRoutes.js");
+
 
 const app = express();
 
@@ -16,6 +17,12 @@ const app = express();
 //     origin: "http://localhost:3000",
 //   })
 // );
+
+
+//dotenv config
+dotenv.config();
+
+console.log(process.env.MONGO_URI);
 
 //mongoose connect
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -27,8 +34,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     console.error('Error connecting to MongoDB:', error.message);
   });
 
-//dotenv config
-dotenv.config();
+
 
 app.use(morgan("dev"));
 

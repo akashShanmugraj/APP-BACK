@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
-import Posts from "../schemas/postsSchema.js";
-import asyncHandler from "express-async-handler";
+const mongoose = require("mongoose");
+const Posts = require("../schemas/postsSchema.js");
+const asyncHandler = require("express-async-handler");
+
 
 //fetch all posts
 const getPosts = asyncHandler(async (req, res) => {
@@ -102,4 +103,4 @@ const deletePost = asyncHandler(async (req, res) => {
   }
 });
 
-export { getPosts, getPostById, getPostByUsername, createPost, updatePost, deletePost };
+module.exports= { getPosts, getPostById, getPostByUsername, createPost, updatePost, deletePost };

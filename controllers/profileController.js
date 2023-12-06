@@ -1,7 +1,8 @@
-import asyncHandler from 'express-async-handler'
-import mongoose from 'mongoose'
-import Profile from '../schemas/profileSchema.js'
-import bcrypt from 'bcrypt'
+const asyncHandler = require('express-async-handler');
+const mongoose = require('mongoose');
+const Profile = require('../schemas/profileSchema.js');
+const bcrypt = require('bcrypt');
+
 
 //fetch all profiles
 const getProfiles = asyncHandler(async (req, res) => {
@@ -156,7 +157,7 @@ const deleteProfile = asyncHandler(async (req, res) => {
 }
 );
 
-export {
+module.exports= {
     getProfiles,
     getProfileById,
     getProfileByUsername,

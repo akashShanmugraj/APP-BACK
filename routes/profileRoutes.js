@@ -1,12 +1,15 @@
-import express from "express";
-import {
+const express = require("express");
+const profileController = require("../controllers/profileController.js");
+
+const {
   getProfiles,
   getProfileById,
   getProfileByUsername,
   createProfile,
   updateProfile,
   deleteProfile,
-} from "../controllers/profileController.js";
+} = profileController;
+
 
 const router = express.Router();
 
@@ -18,5 +21,4 @@ router.post("/",createProfile);
 router.put("/:id",updateProfile);
 router.delete("/:id",deleteProfile);
 
-
-export default router;
+module.exports = router;
