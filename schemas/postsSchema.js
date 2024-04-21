@@ -10,7 +10,7 @@ const postsSchema = new mongoose.Schema({
         required: true
     },
     postImage:{
-        type: Buffer,
+        type: String,
         required: false
     },
     postImageType:{
