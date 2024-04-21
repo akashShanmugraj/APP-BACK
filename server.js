@@ -42,6 +42,10 @@ app.get("/api/check", (req, res) => {
   res.send("This is the Grievance Port API... Online and Active!");
 });
 
+app.get("/help", (req, res) => {
+  res.sendfile(__dirname + '/help.html');
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
