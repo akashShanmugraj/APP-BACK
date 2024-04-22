@@ -29,6 +29,10 @@ const profileSchema = mongoose.Schema({
         type: Date,
         required: true
     },
+    tag: {
+        type: String,
+        required: false
+    },
     location:{
         type: String,
         required: true
