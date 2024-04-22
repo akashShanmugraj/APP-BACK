@@ -29,6 +29,10 @@ const profileSchema = mongoose.Schema({
         type: Date,
         required: true
     },
+    tag: {
+        type: String,
+        required: false
+    },
     location:{
         type: String,
         required: true
@@ -52,17 +56,7 @@ const profileSchema = mongoose.Schema({
     blockedUsers:[{
         type: mongoose.Schema.Types.ObjectId,
         required: false
-    }],
-    profilePic:{
-        type: Buffer,
-        required: false
-    },
-    profilePicType:{
-        type: String,
-        required: false
-    }
-    
-    
+    }]  
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
