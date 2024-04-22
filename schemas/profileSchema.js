@@ -52,17 +52,7 @@ const profileSchema = mongoose.Schema({
     blockedUsers:[{
         type: mongoose.Schema.Types.ObjectId,
         required: false
-    }],
-    profilePic:{
-        type: Buffer,
-        required: false
-    },
-    profilePicType:{
-        type: String,
-        required: false
-    }
-    
-    
+    }]  
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
