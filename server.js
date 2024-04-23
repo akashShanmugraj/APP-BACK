@@ -60,3 +60,22 @@ app.listen(process.env.PORT || 3000, () => {
 app.use("/api/profile", profileRoutes);
 app.use("/api/posts", postsRoutes);
 app.use("/api/comments", commentRoutes);
+app.use("/api/reqinfo", (req, res) => {
+  const requestObject = {
+    "req.app": req.app,
+    "req.baseurl": req.baseUrl,
+    "req.body": req.body,
+    "req.cookie": req.cookie,
+    "req.hostname": req.hostname,
+    "req.ipv6": req.ipv6,
+    "req.params": req.params,
+    "req.path": req.path,
+    "req.protocol": req.protocol,
+    "req.query": req.query,
+    "req.route": req.route,
+    "req.tlsInsecure": req.tlsInsecure,
+    "req.auth": req.auth,
+  };
+  res.send(requestObject);
+  }
+)
