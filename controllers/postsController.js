@@ -37,16 +37,16 @@ const getPostByUsername = asyncHandler(async (req, res) => {
 //create post
 const createPost = asyncHandler(async (req, res) => {
   const post = new Posts({
-    userName: req.body.userName,
-    title: req.body.title,
-    description: req.body.description,
-    upvotes: req.body.upvotes,
-    downvotes: req.body.downvotes,
-    comments: req.body.comments,
-    date: req.body.date,
-    location: req.body.location,
-    postPic: req.body.postPic,
-    postPicType: req.body.postPicType,
+    postTitle: req.body.postTitle,
+    postDescription: req.body.postDescription,
+    postImage: req.body.postImage,
+    postImageType: req.body.postImageType,
+    postDate: req.body.postDate,
+    postAuthor: req.body.postAuthor,
+    postComments: req.body.postComments,
+    postLikes: req.body.postLikes,
+    postDislikes: req.body.postDislikes,
+    postTags: req.body.postTags
   });
 
   const createdPost = await post.save();
