@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { post } = require('../routes/profileRoutes');
 
 const postsSchema = new mongoose.Schema({
     postTitle:{
@@ -29,17 +30,21 @@ const postsSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: false
     }],
-    postLikes:{
-        type: Number,
-        required: false
-    },
-    postDislikes:{
-        type: Number,
-        required: false
-    },
+    postLikes: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User' // Assuming User is the model referenced by ObjectId
+    }],
+    postDislikes:[{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User' // Assuming User is the model referenced by ObjectId
+    }],
     postTags:[{
         type: String,
         required: false
+    }],
+    // postLocation as an array of integers
+    postLocation:[{
+        type: Number
     }],
 
 });
