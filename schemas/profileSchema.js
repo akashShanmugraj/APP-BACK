@@ -25,10 +25,6 @@ const profileSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    joinedOn:{
-        type: Date,
-        required: true
-    },
     tag: {
         type: String,
         required: false
@@ -47,7 +43,7 @@ const profileSchema = mongoose.Schema({
     },
     noOfPosts:{
         type: Number,
-        required: false
+        default: 0
     },
     postsOrComments:[{
         type: mongoose.Schema.Types.ObjectId,
@@ -57,6 +53,8 @@ const profileSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: false
     }]  
+},{
+    timestamps: true
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
