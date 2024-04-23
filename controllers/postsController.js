@@ -1,12 +1,20 @@
 const mongoose = require("mongoose");
 const Posts = require("../schemas/postsSchema.js");
 const asyncHandler = require("express-async-handler");
+const { post } = require("../routes/profileRoutes.js");
 
 
 //fetch all posts
 const getPosts = asyncHandler(async (req, res) => {
   const posts = await Posts.find({});
   res.json(posts);
+});
+const getPostsbyLocation = asyncHandler(async (req, res) => {
+  const xpos = req.params.xpos;
+  const ypos = req.params.ypos;
+
+  const nearposts = await Posts.find({postLocation: { $near: [xpos, ypos], $maxDistance: 100 }});
+  res.json(nearposts);
 });
 
 //fetch post by id
@@ -46,7 +54,8 @@ const createPost = asyncHandler(async (req, res) => {
     postComments: req.body.postComments,
     postLikes: req.body.postLikes,
     postDislikes: req.body.postDislikes,
-    postTags: req.body.postTags
+    postTags: req.body.postTags,
+    postLocation: req.body.postLocation
   });
 
   const createdPost = await post.save();
@@ -103,4 +112,4 @@ const deletePost = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports= { getPosts, getPostById, getPostByUsername, createPost, updatePost, deletePost };
+module.exports= { getPosts, getPostById, getPostByUsername, createPost, updatePost, deletePost, getPostsbyLocation };

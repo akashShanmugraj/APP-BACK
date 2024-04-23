@@ -1,5 +1,6 @@
 const express = require("express");
 const postsController = require("../controllers/postsController.js");
+const { route } = require("./profileRoutes.js");
 
 const {
   getPosts,
@@ -8,6 +9,7 @@ const {
   createPost,
   updatePost,
   deletePost,
+  getPostsbyLocation
 } = postsController;
 
 
@@ -19,5 +21,6 @@ router.get("/:username", getPostByUsername);
 router.post("/", createPost);
 router.put("/:id", updatePost);
 router.delete("/:id", deletePost);
+router.get("/pbpos/:xpos/:ypos", getPostsbyLocation);
 
 module.exports = router;
