@@ -147,7 +147,8 @@ const viewPost = asyncHandler(async (req, res) => {
         (profile.postTags.get(post.postTags[i]) || 0) + 1
       );
     }
-
+    await post.save();
+    await profile.save();
     res.status(201).json(post);
   } catch (error) {
     res.status(404);
