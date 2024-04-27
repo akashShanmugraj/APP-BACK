@@ -25,9 +25,9 @@ const profileSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    joinedOn:{
-        type: Date,
-        required: true
+    tag: {
+        type: String,
+        required: false
     },
     location:{
         type: String,
@@ -43,7 +43,7 @@ const profileSchema = mongoose.Schema({
     },
     noOfPosts:{
         type: Number,
-        required: false
+        default: 0
     },
     postsOrComments:[{
         type: mongoose.Schema.Types.ObjectId,
@@ -53,16 +53,13 @@ const profileSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: false
     }],
-    profilePic:{
-        type: Buffer,
-        required: false
-    },
-    profilePicType:{
-        type: String,
-        required: false
-    }
-    
-    
+    postTags : {
+        type: Map,
+        of: Number,
+        default: {}
+    } 
+},{
+    timestamps: true
 });
 
 const Profile = mongoose.model("Profile", profileSchema);

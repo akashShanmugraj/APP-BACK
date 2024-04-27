@@ -120,6 +120,19 @@ Retrieve a post by its ID.
 **Controller Method:**
 `getPostById`
 
+### Get Post by Location
+    
+```plaintext
+GET /api/posts/pbpos/:xposition/:yposition
+```
+
+**Parameters:**
+- `xposition` (string): x position of the client's access location.
+- `yposition` (string): y position of the client's access location.
+
+**Description:**
+Retrieve a post within 100 units of the client's access location.
+
 ### Get Posts by Username
 
 ```plaintext
@@ -178,6 +191,18 @@ Delete a post by its ID.
 `deletePost`
 
 These routes define basic CRUD operations for managing posts. Customize the information based on your specific application's requirements.
+
+### Track Views for Post / Click API for post
+```plaintext
+GET /api/posts/view/:userid/:postid
+```
+
+**Parameters:**
+- `userid` (string): User ID.
+- `postid` (string): Post ID.
+
+**Description:**
+Tracks the views of a post.
 
 ---
 
