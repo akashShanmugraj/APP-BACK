@@ -9,7 +9,8 @@ const {
   createPost,
   updatePost,
   deletePost,
-  getPostsbyLocation
+  getPostsbyLocation,
+  viewPost
 } = postsController;
 
 
@@ -22,5 +23,5 @@ router.post("/", createPost);
 router.put("/:id", updatePost);
 router.delete("/:id", deletePost);
 router.get("/pbpos/:xpos/:ypos", getPostsbyLocation);
-
+router.get("/view/:userid/:postid", viewPost);
 module.exports = router;

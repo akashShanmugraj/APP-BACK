@@ -126,4 +126,24 @@ const deletePost = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports= { getPosts, getPostById, getPostByUsername, createPost, updatePost, deletePost, getPostsbyLocation };
+const viewPost = asyncHandler(async (req, res) => {
+  console.log(req.params.postid);
+  const post = await Posts.findById(req.params.postid);
+
+  const user = req.params.userid;
+
+  console.log(req.params)
+  try {
+    if (!post.postView.includes(user)) {
+      post.postView.push(user);
+      post.postViewCounter += 1;
+    }
+    await post.save();
+    res.json(post);
+  } catch (error) {
+    res.status(404);
+    throw new Error(error.message);
+  }
+});
+
+module.exports= { getPosts, getPostById, getPostByUsername, createPost, updatePost, deletePost, getPostsbyLocation, viewPost};
