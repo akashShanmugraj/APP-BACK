@@ -52,7 +52,12 @@ const profileSchema = mongoose.Schema({
     blockedUsers:[{
         type: mongoose.Schema.Types.ObjectId,
         required: false
-    }]  
+    }],
+    postTags : {
+        type: Map,
+        of: Number,
+        default: {}
+    } 
 },{
     timestamps: true
 });
