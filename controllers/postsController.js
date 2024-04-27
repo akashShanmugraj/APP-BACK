@@ -3,6 +3,9 @@ const Posts = require("../schemas/postsSchema.js");
 const asyncHandler = require("express-async-handler");
 const { post } = require("../routes/profileRoutes.js");
 
+function computeDistance(x1, y1, x2, y2) {
+  return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+}
 
 //fetch all posts
 const getPosts = asyncHandler(async (req, res) => {
@@ -13,7 +16,18 @@ const getPostsbyLocation = asyncHandler(async (req, res) => {
   const xpos = req.params.xpos;
   const ypos = req.params.ypos;
 
-  const nearposts = await Posts.find({postLocation: { $near: [xpos, ypos], $maxDistance: 100 }});
+  // get all posts
+  const allposts = await Posts.find({});
+  const distancelimit = 100;
+  const nearposts = [];
+  for (let i = 0; i < allposts.length; i++) {
+    const post = allposts[i];
+    const x = post.postLocation[0];
+    const y = post.postLocation[1];
+    if (computeDistance(xpos, ypos, x, y) < distancelimit) {
+      nearposts.push(post);
+    }
+  }
   res.json(nearposts);
 });
 
