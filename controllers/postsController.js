@@ -132,14 +132,11 @@ const viewPost = asyncHandler(async (req, res) => {
   const profile = await Profile.findById(req.params.userid);
   const user = req.params.userid;
 
-  console.log(req.params);
   try {
     if (!post.postView.includes(user)) {
       post.postView.push(user);
       post.postViewCounter += 1;
     }
-    console.log(post.postTags);
-    console.log(post.postTags.length);
     for (let i = 0; i < post.postTags.length; i++) {
       console.log(i);
       profile.postTags.set(
