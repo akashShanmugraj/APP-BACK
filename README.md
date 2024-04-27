@@ -192,6 +192,18 @@ Delete a post by its ID.
 
 These routes define basic CRUD operations for managing posts. Customize the information based on your specific application's requirements.
 
+### Track Views for Post / Click API for post
+```plaintext
+GET /api/posts/view/:userid/:postid
+```
+
+**Parameters:**
+- `userid` (string): User ID.
+- `postid` (string): Post ID.
+
+**Description:**
+Tracks the views of a post.
+
 ---
 
 

@@ -46,6 +46,14 @@ const postsSchema = new mongoose.Schema({
     postLocation:[{
         type: Number
     }],
+    postView: [{ 
+        type: String,
+        ref: 'User' // Assuming User is the model referenced by ObjectId
+    }],
+    postViewCounter: {
+        type: Number,
+        default: 0
+    }
 
 });
 
