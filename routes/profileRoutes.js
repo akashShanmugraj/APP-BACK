@@ -20,7 +20,7 @@ const router = express.Router();
 
 router.get("/",getProfiles);
 router.get("/:id",getProfileById);
-router.get("/:username",getProfileByUsername);
+router.get("/username/:username",getProfileByUsername);
 router.post("/", upload.single('profilePicture'), createProfile);
 router.put("/:id",updateProfile);
 router.delete("/:id",deleteProfile);
