@@ -46,7 +46,7 @@ const getPostById = asyncHandler(async (req, res) => {
 
 //fetch post by username
 const getPostByUsername = asyncHandler(async (req, res) => {
-  const post = await Posts.findOne({ userName: req.params.userName });
+  const post = await Posts.find({ userName: req.params.userName });
 
   if (post) {
     res.json(post);
