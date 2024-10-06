@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const profileRoutes = require("./routes/profileRoutes.js");
 const postsRoutes = require("./routes/postsRoutes.js");
@@ -10,6 +11,8 @@ const commentRoutes = require("./routes/commentRoutes.js");
 
 
 const app = express();
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 //! CORS Implementation TODO
 // app.use(
